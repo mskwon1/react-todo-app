@@ -16,6 +16,9 @@ export default function IndexPage() {
         <li>
           <Link to="/zustand">Zustand</Link>
         </li>
+        <li>
+          <Link to="/recoil">Recoil</Link>
+        </li>
       </ul>
     </div>
   );
