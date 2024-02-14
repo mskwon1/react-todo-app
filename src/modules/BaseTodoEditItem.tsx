@@ -31,7 +31,7 @@ const BaseTodoEditItem = forwardRef<
         })}
       >
         <button type="button" onClick={onClickDone}>
-          완료
+          수정 완료
         </button>
       </div>
     </div>
