@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import resetCSS from '#libs/resetCSS.ts';
-import mainRouter from '#routers/mainRouter.tsx';
+import mainRouter from '#routers/mainRouter';
 
 resetCSS();
 

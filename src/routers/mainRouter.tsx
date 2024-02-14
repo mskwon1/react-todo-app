@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import IndexPage from '#pages/IndexPage';
-import ZustandTodoPage from '#pages/ZustandTodoPage';
+import noopLoader from '#libs/noop-loader';
+import DefaultErrorBoundary from '../DefaultErrorBoundary';
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/zustand',
-    element: <ZustandTodoPage />,
+    loader: noopLoader,
+    ErrorBoundary: DefaultErrorBoundary,
+    lazy: () => import('#pages/ZustandTodoPage'),
   },
 ]);
 

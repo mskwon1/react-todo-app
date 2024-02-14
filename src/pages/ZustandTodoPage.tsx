@@ -2,7 +2,7 @@ import ZustandTodoInput from '#prototypes/ZustandTodoPage/ZustandTodoInput';
 import ZustandTodoList from '#prototypes/ZustandTodoPage/ZustandTodoList';
 import { css } from '@emotion/css';
 
-export default function ZustandTodoPage() {
+export function Component() {
   return (
     <div
       className={css({
@@ -30,3 +30,5 @@ export default function ZustandTodoPage() {
     </div>
   );
 }
+
+Component.displayName = 'ZustandTodoPage';
