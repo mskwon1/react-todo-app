@@ -1,5 +1,10 @@
 import { css } from '@emotion/css';
-import { ChangeEventHandler, forwardRef } from 'react';
+import {
+  ChangeEventHandler,
+  KeyboardEventHandler,
+  forwardRef,
+  useCallback,
+} from 'react';
 
 const BaseTodoEditItem = forwardRef<
   HTMLInputElement,
@@ -11,6 +16,15 @@ const BaseTodoEditItem = forwardRef<
 >((props, ref): JSX.Element => {
   const { input, onChangeInput, onClickDone } = props;
 
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
+    function hanldeKeyDown(e) {
+      if (e.key === 'Enter') {
+        onClickDone();
+      }
+    },
+    [onClickDone]
+  );
+
   return (
     <div
       className={css({
@@ -21,7 +35,12 @@ const BaseTodoEditItem = forwardRef<
         alignItems: 'center',
       })}
     >
-      <input value={input} onChange={onChangeInput} ref={ref} />
+      <input
+        value={input}
+        onChange={onChangeInput}
+        ref={ref}
+        onKeyDown={handleKeyDown}
+      />
       <div
         className={css({
           display: 'flex',
