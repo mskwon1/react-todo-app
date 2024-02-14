@@ -1,5 +1,5 @@
 import BaseTodoEditItem from '#modules/BaseTodoEditItem';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import useZustandTodo from './useZustandTodo';
 
 const ZustandTodoEditItem = (props: { todo: Todo }) => {
@@ -22,8 +22,15 @@ const ZustandTodoEditItem = (props: { todo: Todo }) => {
     [input, updateTodo, todo]
   );
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
+
   return (
     <BaseTodoEditItem
+      ref={inputRef}
       input={input}
       onChangeInput={handleInputChange}
       onClickDone={handleClickDone}

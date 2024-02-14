@@ -1,11 +1,14 @@
 import { css } from '@emotion/css';
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, forwardRef } from 'react';
 
-const BaseTodoEditItem = (props: {
-  input: string;
-  onChangeInput: ChangeEventHandler<HTMLInputElement>;
-  onClickDone: () => void;
-}): JSX.Element => {
+const BaseTodoEditItem = forwardRef<
+  HTMLInputElement,
+  {
+    input: string;
+    onChangeInput: ChangeEventHandler<HTMLInputElement>;
+    onClickDone: () => void;
+  }
+>((props, ref): JSX.Element => {
   const { input, onChangeInput, onClickDone } = props;
 
   return (
@@ -18,7 +21,7 @@ const BaseTodoEditItem = (props: {
         alignItems: 'center',
       })}
     >
-      <input value={input} onChange={onChangeInput} />
+      <input value={input} onChange={onChangeInput} ref={ref} />
       <div
         className={css({
           display: 'flex',
@@ -33,6 +36,6 @@ const BaseTodoEditItem = (props: {
       </div>
     </div>
   );
-};
+});
 
 export default BaseTodoEditItem;
