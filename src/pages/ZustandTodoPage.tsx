@@ -1,6 +1,7 @@
 import ZustandTodoInput from '#prototypes/ZustandTodoPage/ZustandTodoInput';
 import ZustandTodoList from '#prototypes/ZustandTodoPage/ZustandTodoList';
 import { css } from '@emotion/css';
+import zustandImage from '#assets/zustand.png';
 
 export function Component() {
   return (
@@ -24,6 +25,7 @@ export function Component() {
           maxWidth: 600,
         })}
       >
+        <img width={200} height="auto" src={zustandImage} />
         <ZustandTodoInput />
         <ZustandTodoList />
       </div>

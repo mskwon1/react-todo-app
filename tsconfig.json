@@ -24,11 +24,24 @@
     /* paths */
     "baseUrl": ".",
     "paths": {
-      "#libs/*": ["src/libs/*"],
-      "#pages/*": ["src/pages/*"],
-      "#routers/*": ["src/routers/*"],
-      "#modules/*": ["src/modules/*"],
-      "#prototypes/*": ["src/prototypes/*"]
+      "#libs/*": [
+        "src/libs/*"
+      ],
+      "#pages/*": [
+        "src/pages/*"
+      ],
+      "#routers/*": [
+        "src/routers/*"
+      ],
+      "#modules/*": [
+        "src/modules/*"
+      ],
+      "#prototypes/*": [
+        "src/prototypes/*"
+      ],
+      "#assets/*": [
+        "src/assets/*"
+      ]
     },
   },
   "include": [

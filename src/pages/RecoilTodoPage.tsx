@@ -2,6 +2,7 @@ import RecoilTodoInput from '#prototypes/RecoilTodoPage/RecoilTodoInput';
 import RecoilTodoList from '#prototypes/RecoilTodoPage/RecoilTodoList';
 import { css } from '@emotion/css';
 import { RecoilRoot } from 'recoil';
+import recoilImg from '#assets/recoil.png';
 
 export function Component() {
   return (
@@ -26,6 +27,7 @@ export function Component() {
             maxWidth: 600,
           })}
         >
+          <img width={200} height="auto" src={recoilImg} />
           <RecoilTodoInput />
           <RecoilTodoList />
         </div>
