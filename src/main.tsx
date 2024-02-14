@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
+import { RouterProvider } from 'react-router-dom';
+import resetCSS from '#libs/resetCSS.ts';
+import mainRouter from '#routers/mainRouter.tsx';
+
+resetCSS();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={mainRouter} />
   </React.StrictMode>
 );
