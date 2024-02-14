@@ -14,6 +14,12 @@ const router = createBrowserRouter([
     ErrorBoundary: DefaultErrorBoundary,
     lazy: () => import('#pages/ZustandTodoPage'),
   },
+  {
+    path: '/recoil',
+    loader: noopLoader,
+    ErrorBoundary: DefaultErrorBoundary,
+    lazy: () => import('#pages/RecoilTodoPage'),
+  },
 ]);
 
 export default router;
