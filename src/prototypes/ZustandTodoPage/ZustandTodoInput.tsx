@@ -16,6 +16,7 @@ const ZustandTodoInput = () => {
   const handleAdd = useCallback(
     function handleAdd() {
       addTodo({ id: v4(), title: input, isDone: false });
+      setInput('');
     },
     [input, addTodo]
   );
