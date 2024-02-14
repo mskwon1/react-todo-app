@@ -1,10 +1,9 @@
 import { FC } from 'react';
-import { TodoItemProps } from './BaseTodoItem';
 import { css } from '@emotion/css';
 
 const BaseTodoList = (props: {
   todos: Todo[];
-  ItemElement: FC<TodoItemProps>;
+  ItemElement: FC<{ todo: Todo }>;
 }) => {
   const { todos, ItemElement } = props;
 
@@ -18,15 +17,7 @@ const BaseTodoList = (props: {
       })}
     >
       {todos.map((todo) => {
-        return (
-          <ItemElement
-            key={todo.id}
-            todo={todo}
-            onClickDelete={() => console.log('delete')}
-            onClickEdit={() => console.log('edit')}
-            onToggleDone={() => console.log('toggle done')}
-          />
-        );
+        return <ItemElement key={todo.id} todo={todo} />;
       })}
     </div>
   );
