@@ -1,11 +1,16 @@
 import { create } from 'zustand';
 
-const useZustandTodo = create<{
+type States = {
   todos: Todo[];
+};
+
+type Actions = {
   addTodo: (todo: Todo) => void;
   updateTodo: (todo: Todo) => void;
   removeTodo: (id: string) => void;
-}>((set) => ({
+};
+
+const useZustandTodo = create<States & Actions>((set) => ({
   todos: [],
   addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
   updateTodo: (todo) =>
