@@ -1,29 +1,48 @@
 import { css } from '@emotion/css';
 import {
-  ChangeEventHandler,
+  ChangeEvent,
   KeyboardEventHandler,
-  forwardRef,
   useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 
-const BaseTodoEditItem = forwardRef<
-  HTMLInputElement,
-  {
-    input: string;
-    onChangeInput: ChangeEventHandler<HTMLInputElement>;
-    onClickDone: () => void;
-  }
->((props, ref): JSX.Element => {
-  const { input, onChangeInput, onClickDone } = props;
+const BaseTodoEditItem = (props: {
+  todo: Todo;
+  updateTodo: (todo: Todo) => void;
+}): JSX.Element => {
+  const { todo, updateTodo } = props;
+
+  const [input, setInput] = useState(todo.title);
+
+  const handleInputChange = useCallback(function handleInputChange(
+    e: ChangeEvent<HTMLInputElement>
+  ) {
+    setInput(e.target.value);
+  }, []);
+
+  const handleDone = useCallback(
+    function hanldeDone() {
+      updateTodo({ ...todo, title: input });
+    },
+    [updateTodo, todo, input]
+  );
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
     function hanldeKeyDown(e) {
       if (e.key === 'Enter') {
-        onClickDone();
+        handleDone();
       }
     },
-    [onClickDone]
+    [handleDone]
   );
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
 
   return (
     <div
@@ -36,9 +55,9 @@ const BaseTodoEditItem = forwardRef<
       })}
     >
       <input
+        ref={inputRef}
         value={input}
-        onChange={onChangeInput}
-        ref={ref}
+        onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
       <div
@@ -49,12 +68,12 @@ const BaseTodoEditItem = forwardRef<
           gap: 4,
         })}
       >
-        <button type="button" onClick={onClickDone}>
+        <button type="button" onClick={handleDone}>
           수정 완료
         </button>
       </div>
     </div>
   );
-});
+};
 
 export default BaseTodoEditItem;
