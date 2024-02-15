@@ -22,6 +22,9 @@ export default function IndexPage() {
         <li>
           <Link to="/jotai">Jotai</Link>
         </li>
+        <li>
+          <Link to="/context">Context</Link>
+        </li>
       </ul>
     </div>
   );
