@@ -8,10 +8,12 @@ import {
   useState,
 } from 'react';
 
-const BaseTodoEditItem = (props: {
+export type TodoEditItemProps = {
   todo: Todo;
   updateTodo: (todo: Todo) => void;
-}): JSX.Element => {
+};
+
+const BaseTodoEditItem = (props: TodoEditItemProps): JSX.Element => {
   const { todo, updateTodo } = props;
 
   const [input, setInput] = useState(todo.title);

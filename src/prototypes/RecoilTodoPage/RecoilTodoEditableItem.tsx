@@ -5,29 +5,13 @@ import { useRecoilTodoMutations } from './useRecoilTodo';
 
 const RecoilTodoEditableItem = (props: { todo: Todo }) => {
   const { todo } = props;
-  const { id } = todo;
 
   const [isEdit, setIsEdit] = useState(false);
-
-  const { updateTodo, removeTodo } = useRecoilTodoMutations();
-
-  const handleToggleDone = useCallback(
-    function handleToggleDone() {
-      updateTodo({ ...todo, isDone: !todo.isDone });
-    },
-    [updateTodo, todo]
-  );
-
-  const handleDelete = useCallback(
-    function handleDelete() {
-      removeTodo(id);
-    },
-    [removeTodo, id]
-  );
-
-  const handleEdit = useCallback(function handleEdit() {
+  const handleClickEdit = useCallback(function handleEdit() {
     setIsEdit(true);
   }, []);
+
+  const { updateTodo, removeTodo } = useRecoilTodoMutations();
 
   if (isEdit) {
     return <RecoilTodoEditItem todo={todo} />;
@@ -36,9 +20,9 @@ const RecoilTodoEditableItem = (props: { todo: Todo }) => {
   return (
     <BaseTodoItem
       todo={todo}
-      onToggleDone={handleToggleDone}
-      onClickEdit={handleEdit}
-      onClickDelete={handleDelete}
+      onClickEdit={handleClickEdit}
+      onUpdateTodo={updateTodo}
+      onRemoveTodo={removeTodo}
     />
   );
 };

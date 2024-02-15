@@ -5,30 +5,14 @@ import ZustandTodoEditItem from './ZustandTodoEditItem';
 
 const ZustandTodoEditableItem = (props: { todo: Todo }) => {
   const { todo } = props;
-  const { id } = todo;
 
   const [isEdit, setIsEdit] = useState(false);
-
-  const removeTodo = useZustandTodo((actions) => actions.removeTodo);
-  const updateTodo = useZustandTodo((actions) => actions.updateTodo);
-
-  const handleToggleDone = useCallback(
-    function handleToggleDone() {
-      updateTodo({ ...todo, isDone: !todo.isDone });
-    },
-    [updateTodo, todo]
-  );
-
-  const handleDelete = useCallback(
-    function handleDelete() {
-      removeTodo(id);
-    },
-    [removeTodo, id]
-  );
-
   const handleEdit = useCallback(function handleEdit() {
     setIsEdit(true);
   }, []);
+
+  const removeTodo = useZustandTodo((actions) => actions.removeTodo);
+  const updateTodo = useZustandTodo((actions) => actions.updateTodo);
 
   if (isEdit) {
     return <ZustandTodoEditItem todo={todo} />;
@@ -37,9 +21,9 @@ const ZustandTodoEditableItem = (props: { todo: Todo }) => {
   return (
     <BaseTodoItem
       todo={todo}
-      onToggleDone={handleToggleDone}
+      onUpdateTodo={updateTodo}
       onClickEdit={handleEdit}
-      onClickDelete={handleDelete}
+      onRemoveTodo={removeTodo}
     />
   );
 };
