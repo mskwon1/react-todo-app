@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import useZustandTodo from './useZustandTodo';
 import BaseTodoItem from '#modules/BaseTodoItem';
-import ZustandTodoEditItem from './ZustandTodoEditItem';
+import BaseTodoEditItem from '#modules/BaseTodoEditItem';
 
 const ZustandTodoEditableItem = (props: { todo: Todo }) => {
   const { todo } = props;
@@ -11,11 +11,11 @@ const ZustandTodoEditableItem = (props: { todo: Todo }) => {
     setIsEdit(true);
   }, []);
 
-  const removeTodo = useZustandTodo((actions) => actions.removeTodo);
   const updateTodo = useZustandTodo((actions) => actions.updateTodo);
+  const removeTodo = useZustandTodo((actions) => actions.removeTodo);
 
   if (isEdit) {
-    return <ZustandTodoEditItem todo={todo} />;
+    return <BaseTodoEditItem todo={todo} updateTodo={updateTodo} />;
   }
 
   return (
