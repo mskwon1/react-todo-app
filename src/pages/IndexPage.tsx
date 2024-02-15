@@ -19,6 +19,9 @@ export default function IndexPage() {
         <li>
           <Link to="/recoil">Recoil</Link>
         </li>
+        <li>
+          <Link to="/jotai">Jotai</Link>
+        </li>
       </ul>
     </div>
   );

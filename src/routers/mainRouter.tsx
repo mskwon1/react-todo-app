@@ -20,6 +20,12 @@ const router = createBrowserRouter([
     ErrorBoundary: DefaultErrorBoundary,
     lazy: () => import('#pages/RecoilTodoPage'),
   },
+  {
+    path: '/jotai',
+    loader: noopLoader,
+    ErrorBoundary: DefaultErrorBoundary,
+    lazy: () => import('#pages/JotaiTodoPage'),
+  },
 ]);
 
 export default router;
