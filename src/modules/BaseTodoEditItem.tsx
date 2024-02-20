@@ -54,10 +54,12 @@ const BaseTodoEditItem = (props: TodoEditItemProps): JSX.Element => {
         padding: 4,
         border: 'solid',
         alignItems: 'center',
+        gap: 4,
       })}
     >
       <input
         ref={inputRef}
+        className={css({ flexGrow: 1 })}
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
