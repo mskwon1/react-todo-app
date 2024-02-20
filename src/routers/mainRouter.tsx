@@ -32,6 +32,12 @@ const router = createBrowserRouter([
     ErrorBoundary: DefaultErrorBoundary,
     lazy: () => import('#pages/ContextTodoPage'),
   },
+  {
+    path: '/redux',
+    loader: noopLoader,
+    ErrorBoundary: DefaultErrorBoundary,
+    lazy: () => import('#pages/ReduxTodoPage'),
+  },
 ]);
 
 export default router;

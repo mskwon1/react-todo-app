@@ -25,6 +25,9 @@ export default function IndexPage() {
         <li>
           <Link to="/context">Context</Link>
         </li>
+        <li>
+          <Link to="/redux">Redux</Link>
+        </li>
       </ul>
     </div>
   );
