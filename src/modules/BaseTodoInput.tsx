@@ -20,6 +20,10 @@ const BaseTodoInput = (props: { addTodo: (todo: Todo) => void }) => {
 
   const handleAddTodo = useCallback(
     function handleAddTodo() {
+      if (!input) {
+        return;
+      }
+
       addTodo({ id: v4(), title: input, isDone: false });
 
       // reset input
