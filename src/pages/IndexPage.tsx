@@ -1,7 +1,16 @@
 import { css } from '@emotion/css';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function IndexPage() {
+  useEffect(() => {
+    fetch('/api/todos')
+      .then((response) => {
+        return response.json();
+      })
+      .then(console.log);
+  }, []);
+
   return (
     <div
       className={css({
