@@ -14,9 +14,14 @@ const todos: Todo[] = [
   },
 ];
 
+const pause = (ms: number) =>
+  new Promise((resolve) => {
+    setTimeout(() => resolve(undefined), ms);
+  });
+
 const mockWorker = setupWorker(
-  http.get('/api/todos', ({ request }) => {
-    console.log(request);
+  http.get('/api/todos', async () => {
+    await pause(1000);
     return HttpResponse.json(todos);
   })
 );
